@@ -11,10 +11,10 @@ namespace Game.State
         public FastBoxState()
         {
             _stepMap = new[] {
-                new KeyValuePair<Step,Tuple<int, int>>(Step.Left,  new Tuple<int, int>(-2,0)),
-                new KeyValuePair<Step,Tuple<int, int>>(Step.Right,  new Tuple<int, int>(2,0)),
-                new KeyValuePair<Step,Tuple<int, int>>(Step.Down,  new Tuple<int, int>(0,-2)),
-                new KeyValuePair<Step,Tuple<int, int>>(Step.Up,  new Tuple<int, int>(0,2)),
+                new KeyValuePair<Step,Tuple<int, int>>(Step.Left,  new Tuple<int, int>(0,-2)),
+                new KeyValuePair<Step,Tuple<int, int>>(Step.Right,  new Tuple<int, int>(0,2)),
+                new KeyValuePair<Step,Tuple<int, int>>(Step.Down,  new Tuple<int, int>(2,0)),
+                new KeyValuePair<Step,Tuple<int, int>>(Step.Up,  new Tuple<int, int>(-2,0)),
             }.ToDictionary(t => t.Key, t => t.Value);
 
             _stepCounter = 5;

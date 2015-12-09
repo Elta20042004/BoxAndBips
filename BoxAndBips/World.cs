@@ -1,4 +1,6 @@
-﻿namespace Game
+﻿using System;
+
+namespace Game
 {
     public class World
     {
@@ -11,6 +13,13 @@
             M = m;
             N = n;
             _gridCells = new ICell[m, n];
+            for (int i = 0; i < M; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    _gridCells[i, j] = new EmptyCell();
+                }
+            }
         }
 
         public void PutPointBip(int x, int y, int points)
@@ -29,7 +38,7 @@
             _gridCells[x, y] = box;
         }
 
-        public void PutEmptyCell(int x, int y)
+        public void PutEmptyCell(int x, int y) 
         {
             _gridCells[x,y] = new EmptyCell();
         }
@@ -37,6 +46,23 @@
         public ICell GetCell(int x, int y)
         {
             return _gridCells[x, y];
+        }
+
+        public override string ToString()
+        {
+            string result= string.Empty;
+            for (int i = 0; i < M; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    if (_gridCells[i, j] ==null)
+                        throw new ArgumentException();
+                    result += _gridCells[i, j].ToString();
+                }
+
+                result += "\n\r";
+            }
+            return result;
         }
     }
 }

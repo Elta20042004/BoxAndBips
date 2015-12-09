@@ -13,6 +13,7 @@ namespace Game
         public Box(World world)
         {
             World = world;
+            State = new NormalBoxState();
         }
 
         public IBoxState State { get; set; }
@@ -58,6 +59,11 @@ namespace Game
         public void Remove()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return "@";
         }
     }
 }
