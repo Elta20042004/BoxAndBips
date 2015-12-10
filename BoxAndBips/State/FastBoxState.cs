@@ -6,10 +6,12 @@ namespace Game.State
 {
     public class FastBoxState : IBoxState
     {
+        public int Life { get; private set; }
         private readonly Dictionary<Step, Tuple<int, int>> _stepMap;
         private int _stepCounter;
-        public FastBoxState()
+        public FastBoxState(int life)
         {
+            Life = life;
             _stepMap = new[] {
                 new KeyValuePair<Step,Tuple<int, int>>(Step.Left,  new Tuple<int, int>(0,-2)),
                 new KeyValuePair<Step,Tuple<int, int>>(Step.Right,  new Tuple<int, int>(0,2)),
@@ -30,10 +32,6 @@ namespace Game.State
             return result;
         }
 
-        public bool IsALive(Box box)
-        {
-            return true;
-        }
 
         public void DoStep(Box box, Step step)
         {
@@ -42,15 +40,25 @@ namespace Game.State
             box.X = _stepMap[step].Item1 + box.X;
             box.Y = _stepMap[step].Item2 + box.Y;
             _stepCounter--;
+            Life--;
+
+            if (box.World.GetCell(box.X, box.Y) is LifeBip)
+            {
+                LifeBip pb = (LifeBip)box.World.GetCell(box.X, box.Y);
+                Life += pb.Life;
+            }
+            else if (Life == 0)
+            {
+                box.State = new DeadBoxState();
+            }
 
             if (box.World.GetCell(box.X, box.Y) is SpeedBip)
             {
                 _stepCounter = _stepCounter + 5;
             }
-
-            if (_stepCounter == 0)
+            else if (_stepCounter == 0)
             {
-                box.State = new NormalBoxState();       //perehod na novyj state
+                box.State = new NormalBoxState(Life);
             }
 
             box.World.PutBox(box, box.X, box.Y);

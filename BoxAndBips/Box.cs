@@ -8,52 +8,45 @@ namespace Game
         public int X { get;  set; }
         public int Y { get;  set; }
 
-        public World World { get; }
+        public string Name { get; private set; }       
+        public World World { get; private set; }
 
-        public Box(World world)
+        public Box(string name, int life, World world)
         {
+            Name = name;
             World = world;
-            State = new NormalBoxState();
+            State = new NormalBoxState(life);
         }
 
         public IBoxState State { get; set; }
 
         public void StepDown()
         {
-            bool ok = State.CanStep(this, Step.Down);
-            if (ok)
-            {
-                State.DoStep(this,Step.Down);
-            }
+            MakeStep(Step.Down);
         }
 
         public void StepUp()
         {
-            bool ok = State.CanStep(this, Step.Up);
-            if (ok)
-            {
-                State.DoStep(this, Step.Up);
-            }
+            MakeStep(Step.Up);
         }
 
         public void StepLeft()
         {
-            bool ok = State.CanStep(this, Step.Left);
-            if (ok)
-            {
-                State.DoStep(this, Step.Left);
-            }
+            MakeStep(Step.Left);
         }
 
         public void StepRight()
         {
-            bool ok = State.CanStep(this, Step.Right);
-            if (ok)
-            {
-                State.DoStep(this, Step.Right);
-            }
+            MakeStep(Step.Right);
         }
 
+        private void MakeStep(Step value)
+        {
+            if (State.CanStep(this, value))
+            {
+                State.DoStep(this, value);
+            }
+        }
 
 
         public void Remove()

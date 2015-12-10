@@ -47,11 +47,12 @@
     <Compile Include="BoundValidator.cs" />
     <Compile Include="Box.cs" />
     <Compile Include="EmptyCell.cs" />
+    <Compile Include="State\DeadBoxState.cs" />
     <Compile Include="State\FastBoxState.cs" />
     <Compile Include="State\IBoxState.cs" />
     <Compile Include="ICell.cs" />
     <Compile Include="IItem.cs" />
-    <Compile Include="PointBip.cs" />
+    <Compile Include="LifeBip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpeedBip.cs" />

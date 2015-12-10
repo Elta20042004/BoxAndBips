@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Game
 {
@@ -22,10 +23,10 @@ namespace Game
             }
         }
 
-        public void PutPointBip(int x, int y, int points)
+        public void PutLifeBip(int x, int y, int life)
         {
-            Bip pointBip = new PointBip();               
-            _gridCells[x, y] = pointBip;
+            Bip lifeBip = new LifeBip(life);               
+            _gridCells[x, y] = lifeBip;
         }
         public void PutSpeedBip(int x, int y, int speed)
         {
@@ -50,19 +51,18 @@ namespace Game
 
         public override string ToString()
         {
-            string result= string.Empty;
+            StringBuilder builder = new StringBuilder();            
             for (int i = 0; i < M; i++)
             {
                 for (int j = 0; j < N; j++)
                 {
                     if (_gridCells[i, j] ==null)
                         throw new ArgumentException();
-                    result += _gridCells[i, j].ToString();
+                    builder.Append(_gridCells[i, j]);
                 }
-
-                result += "\n\r";
+                builder.Append("\n\r");
             }
-            return result;
+            return builder.ToString();
         }
     }
 }
