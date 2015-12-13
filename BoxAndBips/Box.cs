@@ -20,32 +20,35 @@ namespace Game
 
         public IBoxState State { get; set; }
 
-        public void StepDown()
+        public bool StepDown()
         {
-            MakeStep(Step.Down);
+            return MakeStep(Step.Down);
         }
 
-        public void StepUp()
+        public bool StepUp()
         {
-            MakeStep(Step.Up);
+            return MakeStep(Step.Up);
         }
 
-        public void StepLeft()
+        public bool StepLeft()
         {
-            MakeStep(Step.Left);
+            return MakeStep(Step.Left);
         }
 
-        public void StepRight()
+        public bool StepRight()
         {
-            MakeStep(Step.Right);
+            return MakeStep(Step.Right);
         }
 
-        private void MakeStep(Step value)
+        private bool MakeStep(Step value)
         {
             if (State.CanStep(this, value))
             {
                 State.DoStep(this, value);
+                return true;
             }
+
+            return false;
         }
 
 

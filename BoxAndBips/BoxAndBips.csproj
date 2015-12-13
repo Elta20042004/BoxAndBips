@@ -48,6 +48,8 @@
     <Compile Include="BoundValidator.cs" />
     <Compile Include="Box.cs" />
     <Compile Include="EmptyCell.cs" />
+    <Compile Include="IRobot.cs" />
+    <Compile Include="RandomRobot.cs" />
     <Compile Include="State\DeadBoxState.cs" />
     <Compile Include="State\FastBoxState.cs" />
     <Compile Include="State\IBoxState.cs" />

@@ -20,8 +20,25 @@ namespace Game
             var box = new Box("box1", 10, w);
             box.X = 0;
             box.Y = 0;
-
             w.PutBox(box, 0, 0);
+
+            Box robotBoxI = new Box("robot-I", 10, w);
+            robotBoxI.X = 3;
+            robotBoxI.Y = 3;
+            w.PutBox(robotBoxI,3,3);
+
+            Box robotBoxII = new Box("robot-II", 10, w);
+            robotBoxII.X = 4;
+            robotBoxII.Y = 4;
+            w.PutBox(robotBoxII, 4, 4);
+
+            Box robotBoxIII = new Box("robot-III", 10, w);
+            robotBoxIII.X = 10;
+            robotBoxIII.Y = 10;
+            w.PutBox(robotBoxIII, 10, 10);
+
+            RandomRobot randomBox = new RandomRobot(new[] { robotBoxI , robotBoxII , robotBoxIII });
+         
 
             Console.WriteLine(w.ToString());
             Console.WriteLine(box.State.Life);
@@ -44,6 +61,7 @@ namespace Game
                         box.StepUp();
                         break;
                 }
+                randomBox.DoStep();
                 Console.Clear();
                 Console.WriteLine(w);
                 Console.WriteLine(box.State.Life);
