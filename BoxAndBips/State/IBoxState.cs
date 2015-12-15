@@ -2,10 +2,12 @@ namespace Game.State
 {
     public interface IBoxState            //logic
     {
-        int Life { get; }
+        int Life { get; set; }
 
-        void DoStep(Box box, Step step);
+        void DoStep(Step step);
 
         bool CanStep(Box box, Step step);
+
+        bool IsAlive { get; }
     }
 }

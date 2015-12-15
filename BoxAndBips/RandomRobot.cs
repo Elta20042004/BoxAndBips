@@ -7,10 +7,12 @@ namespace Game
     public class RandomRobot : IRobot
     {
         private readonly IEnumerable<Box> _boxes;
+        private readonly Random _random;
 
         public RandomRobot(IEnumerable<Box> boxes)
         {
             _boxes = boxes;
+            _random = new Random();
         }
 
         public void DoStep()
@@ -24,10 +26,10 @@ namespace Game
         private void DoStep(Box box)
         {
             HashSet<Step> steps = new HashSet<Step>();
-            Random random = new Random();
+            
             while (steps.Count < 4)
             {
-                int k = random.Next(0, 3);
+                int k = _random.Next(4);
 
                 switch (k)
                 {
@@ -48,13 +50,13 @@ namespace Game
                         {
                             return;
                         }
-                        steps.Add(Step.Down); break;
+                        steps.Add(Step.Right); break;
                     case 3:
                         if (box.StepUp())
                         {
                             return;
                         }
-                        steps.Add(Step.Down); break;
+                        steps.Add(Step.Up); break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

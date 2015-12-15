@@ -15,7 +15,7 @@ namespace Game
         {
             Name = name;
             World = world;
-            State = new NormalBoxState(life);
+            State = new NormalBoxState(life,this);
         }
 
         public IBoxState State { get; set; }
@@ -40,11 +40,13 @@ namespace Game
             return MakeStep(Step.Right);
         }
 
+        
+
         private bool MakeStep(Step value)
         {
             if (State.CanStep(this, value))
             {
-                State.DoStep(this, value);
+                State.DoStep(value);
                 return true;
             }
 
