@@ -1,6 +1,6 @@
 using System;
 
-namespace Game.State
+namespace BoxAndBips.State
 {
     public class DeadBoxState : IBoxState
     {

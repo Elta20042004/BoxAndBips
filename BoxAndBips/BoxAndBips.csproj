@@ -7,7 +7,7 @@
     <ProjectGuid>{E9B0DFDD-A833-4DB9-845C-22A2968C33A1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Game</RootNamespace>
+    <RootNamespace>BoxAndBips</RootNamespace>
     <AssemblyName>Game</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -47,8 +47,11 @@
     <Compile Include="Bip.cs" />
     <Compile Include="BoundValidator.cs" />
     <Compile Include="Box.cs" />
+    <Compile Include="BoxAssaultValidator.cs" />
     <Compile Include="EmptyCell.cs" />
     <Compile Include="IRobot.cs" />
+    <Compile Include="IValidator.cs" />
+    <Compile Include="IWorld.cs" />
     <Compile Include="Rule\IRule.cs" />
     <Compile Include="RandomRobot.cs" />
     <Compile Include="Rule\DominanceRule.cs" />

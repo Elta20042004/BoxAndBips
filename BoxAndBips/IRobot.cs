@@ -1,7 +1,5 @@
 
-using System.Collections.Generic;
-
-namespace Game
+namespace BoxAndBips
 {
     public interface IRobot
     {

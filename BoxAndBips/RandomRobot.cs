@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace Game
+namespace BoxAndBips
 {
     public class RandomRobot : IRobot
     {

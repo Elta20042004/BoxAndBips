@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Game.Rule;
+using BoxAndBips.Rule;
 
-namespace Game
+namespace BoxAndBips
 {
-    public class World
+    public class World : IWorld
     {
         private readonly IEnumerable<IRule> _setOfRules;
         private readonly List<Box> _boxes;       

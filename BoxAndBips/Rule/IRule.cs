@@ -1,8 +1,8 @@
-namespace Game.Rule
+namespace BoxAndBips.Rule
 {
     public interface IRule
     {
-        void Apply(Box box, World w);
+        void Apply(Box box, IWorld w);
 
     }
 }

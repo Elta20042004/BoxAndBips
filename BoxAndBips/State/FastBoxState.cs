@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Game.State
+namespace BoxAndBips.State
 {
     public class FastBoxState : IBoxState
     {      
@@ -51,18 +51,20 @@ namespace Game.State
             get { return true; }
         }
 
-
-
         public bool CanStep(Box box, Step step)
         {
+            int x = _stepMap[step].Item1 + box.X;
+            int y = _stepMap[step].Item2 + box.Y;
             BoundValidator validator = new BoundValidator();
-            bool result = validator.Validator(
-                box.World,
-                _stepMap[step].Item1 + box.X,
-                _stepMap[step].Item2 + box.Y);
+            bool result = validator.Validate(box.World, x, y);
+
+            if (result)
+            {
+                BoxAssaultValidator attack = new BoxAssaultValidator();
+                result = attack.Validate(box.World, x, y);
+            }
             return result;
         }
-
 
         public void DoStep( Step step)
         {

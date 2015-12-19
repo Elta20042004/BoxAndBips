@@ -1,6 +1,6 @@
-﻿namespace Game
+﻿namespace BoxAndBips
 {
-    class SpeedBip : Bip
+    public class SpeedBip : Bip
     {
         public int Speed { get; set; }
 

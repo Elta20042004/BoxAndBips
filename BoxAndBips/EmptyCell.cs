@@ -1,4 +1,4 @@
-﻿namespace Game
+﻿namespace BoxAndBips
 {
     class EmptyCell : ICell //pustaya kletka
     {

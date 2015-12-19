@@ -1,8 +1,8 @@
-﻿namespace Game
+﻿namespace BoxAndBips
 {
-    public class BoundValidator
+    public class BoundValidator : IValidator
     {
-        public bool Validator(World world, int x, int y)
+        public bool Validate(IWorld world, int x, int y)
         {
             if ((x >= 0 && x < world.M) && (y >= 0 && y < world.N))
             {
@@ -14,4 +14,5 @@
             }
         }
     }
+
 }

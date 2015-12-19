@@ -1,4 +1,4 @@
-namespace Game.State
+namespace BoxAndBips.State
 {
     public interface IBoxState            //logic
     {

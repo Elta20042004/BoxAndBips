@@ -1,7 +1,7 @@
 using System;
-using Game.State;
+using BoxAndBips.State;
 
-namespace Game
+namespace BoxAndBips
 {
     public class Box : IItem
     {
@@ -9,9 +9,9 @@ namespace Game
         public int Y { get;  set; }
 
         public string Name { get; private set; }       
-        public World World { get; private set; }
+        public IWorld World { get; private set; }
 
-        public Box(string name, int life, World world)
+        public Box(string name, int life, IWorld world)
         {
             Name = name;
             World = world;

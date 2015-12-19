@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Game
+namespace BoxAndBips
 {
     public abstract class Bip : IItem
     {

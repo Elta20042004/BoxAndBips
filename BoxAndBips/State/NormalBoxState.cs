@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Game.State
+namespace BoxAndBips.State
 {
     public class NormalBoxState : IBoxState     //bystryj box
     {
@@ -49,15 +49,18 @@ namespace Game.State
             get { return true; }
         }
 
- 
-
         public bool CanStep(Box box, Step step)
         {
+            int x = _stepMap[step].Item1 + box.X;
+            int y = _stepMap[step].Item2 + box.Y;
             BoundValidator validator = new BoundValidator();
-            bool result = validator.Validator(
-                box.World,
-                _stepMap[step].Item1 + box.X,
-                _stepMap[step].Item2 + box.Y);
+            bool result = validator.Validate(box.World,x, y);
+
+            if (result)
+            {
+                BoxAssaultValidator attack = new BoxAssaultValidator();
+                result = attack.Validate(box.World, x, y);
+            }
             return result;
         }
 
@@ -67,16 +70,18 @@ namespace Game.State
 
             _box.X = _stepMap[step].Item1 + _box.X;
             _box.Y = _stepMap[step].Item2 + _box.Y;
-            Life--;
+
 
             if (_box.World.GetCell(_box.X, _box.Y) is LifeBip)
             {
                 LifeBip pb = (LifeBip)_box.World.GetCell(_box.X, _box.Y);
                 Life += pb.Life;
             }
-            else if (_box.World.GetCell(_box.X, _box.Y) is SpeedBip)
+            Life--;
+
+            if (Life > 0 && _box.World.GetCell(_box.X, _box.Y) is SpeedBip)
             {
-                _box.State = new FastBoxState(Life, _box);
+                _box.State = new FastBoxState(Life - 1, _box);
             }
 
             _box.World.PutBox(_box, _box.X, _box.Y);

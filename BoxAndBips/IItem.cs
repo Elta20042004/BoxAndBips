@@ -1,4 +1,4 @@
-﻿namespace Game
+﻿namespace BoxAndBips
 {
     public interface IItem : ICell   //soderzhanie kletki
     {
