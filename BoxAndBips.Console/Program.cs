@@ -8,7 +8,7 @@ namespace BoxAndBips
         static void Main(string[] args)
         {
 
-            IWorld w = new World(14, 15,new[] {new DominanceRule()});
+            IWorld w = new World(14, 15, new[] { new DominanceRule() });
             w.PutSpeedBip(1, 2, 0);
             w.PutSpeedBip(3, 2, 0);
             w.PutSpeedBip(0, 1, 0);
@@ -23,7 +23,7 @@ namespace BoxAndBips
             Box robotBoxI = new Box("robot-I", 50, w);
             robotBoxI.X = 3;
             robotBoxI.Y = 3;
-            w.PutBox(robotBoxI,3,3);
+            w.PutBox(robotBoxI, 3, 3);
 
             Box robotBoxII = new Box("robot-II", 50, w);
             robotBoxII.X = 4;
@@ -35,8 +35,8 @@ namespace BoxAndBips
             robotBoxIII.Y = 10;
             w.PutBox(robotBoxIII, 10, 10);
 
-            RandomRobot randomBox = new RandomRobot(new[] { robotBoxI , robotBoxII , robotBoxIII });
-         
+            RandomRobot randomBox = new RandomRobot(new[] { robotBoxI, robotBoxII, robotBoxIII });
+
 
             Console.WriteLine(w.ToString());
             Console.WriteLine(box.State.Life);
@@ -64,7 +64,7 @@ namespace BoxAndBips
                 Console.Clear();
                 Console.WriteLine(w);
 
-                Console.WriteLine("{0} {1}",box.Name,box.State.Life);
+                Console.WriteLine("{0} {1}", box.Name, box.State.Life);
                 Console.WriteLine("{0} {1}", robotBoxI.Name, robotBoxI.State.Life);
                 Console.WriteLine("{0} {1}", robotBoxII.Name, robotBoxII.State.Life);
                 Console.WriteLine("{0} {1}", robotBoxIII.Name, robotBoxIII.State.Life);

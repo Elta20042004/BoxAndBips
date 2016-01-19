@@ -27,9 +27,9 @@ namespace BoxAndBips
             }
         }
 
-        public int M { get; }
+        public int M { get; private set; }
 
-        public int N { get; }
+        public int N { get; private set; }
 
         public void ApplyRules()
         {
