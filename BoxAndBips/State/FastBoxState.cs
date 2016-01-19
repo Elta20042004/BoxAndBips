@@ -4,25 +4,19 @@ using System.Linq;
 
 namespace BoxAndBips.State
 {
-    public class FastBoxState : IBoxState
-    {      
-        private readonly Dictionary<Step, Tuple<int, int>> _stepMap;
-        private int _stepCounter;
-        private readonly Box _box;
-        private int _life;
+    public abstract class LiveBoxState : IBoxState
+    {
+        protected readonly Dictionary<Step, Tuple<int, int>> _stepMap;
+        protected readonly Box _box;
+        protected int _life;
+        private Box box;
+        private Dictionary<Step, Tuple<int, int>> dictionary;
 
-        public FastBoxState(int life, Box box)
+        public LiveBoxState(int life, Box box, Dictionary<Step, Tuple<int, int>> dictionary)
         {
-            _life = life;
-            _box = box;
-            _stepMap = new[] {
-                new KeyValuePair<Step,Tuple<int, int>>(Step.Left,  new Tuple<int, int>(0,-2)),
-                new KeyValuePair<Step,Tuple<int, int>>(Step.Right,  new Tuple<int, int>(0,2)),
-                new KeyValuePair<Step,Tuple<int, int>>(Step.Down,  new Tuple<int, int>(2,0)),
-                new KeyValuePair<Step,Tuple<int, int>>(Step.Up,  new Tuple<int, int>(-2,0)),
-            }.ToDictionary(t => t.Key, t => t.Value);
-
-            _stepCounter = 5;
+            Life = life;
+            this.box = box;
+            this.dictionary = dictionary;
         }
 
         public int Life
@@ -51,6 +45,8 @@ namespace BoxAndBips.State
             get { return true; }
         }
 
+        public abstract void DoStep(Step step);
+
         public bool CanStep(Box box, Step step)
         {
             int x = _stepMap[step].Item1 + box.X;
@@ -65,8 +61,26 @@ namespace BoxAndBips.State
             }
             return result;
         }
+    }
 
-        public void DoStep( Step step)
+    public class FastBoxState : LiveBoxState
+    {      
+        private int _stepCounter;
+
+        public FastBoxState(int life, Box box):base(
+            life, 
+            box, 
+            new[] {
+                new KeyValuePair<Step,Tuple<int, int>>(Step.Left,  new Tuple<int, int>(0,-2)),
+                new KeyValuePair<Step,Tuple<int, int>>(Step.Right,  new Tuple<int, int>(0,2)),
+                new KeyValuePair<Step,Tuple<int, int>>(Step.Down,  new Tuple<int, int>(2,0)),
+                new KeyValuePair<Step,Tuple<int, int>>(Step.Up,  new Tuple<int, int>(-2,0)),
+            }.ToDictionary(t => t.Key, t => t.Value))
+        {
+            _stepCounter = 5;
+        }
+
+        public override void DoStep( Step step)
         {
             _box.World.PutEmptyCell(_box.X, _box.Y);
 

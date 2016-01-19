@@ -52,6 +52,7 @@
     <Compile Include="Box.cs" />
     <Compile Include="BoxAssaultValidator.cs" />
     <Compile Include="EmptyCell.cs" />
+    <Compile Include="ICell.cs" />
     <Compile Include="IRobot.cs" />
     <Compile Include="IValidator.cs" />
     <Compile Include="IWorld.cs" />
@@ -61,7 +62,6 @@
     <Compile Include="State\DeadBoxState.cs" />
     <Compile Include="State\FastBoxState.cs" />
     <Compile Include="State\IBoxState.cs" />
-    <Compile Include="ICell.cs" />
     <Compile Include="IItem.cs" />
     <Compile Include="LifeBip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +72,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ItemDesign.cd" />
+    <None Include="RobotDiagram.cd" />
+    <None Include="Rule\RuleDiagram.cd" />
+    <None Include="State\StateDiagram.cd" />
+    <None Include="ValidatorDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

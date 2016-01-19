@@ -1,4 +1,4 @@
-namespace BoxAndBips
+﻿namespace BoxAndBips
 {
     public interface ICell
     {
